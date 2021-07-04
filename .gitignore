@@ -154,3 +154,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,jetbrains
+/.idea/vcs.xml
+/.idea/modules.xml
+/.idea/frontend-pro.iml
+/.idea/.gitignore
