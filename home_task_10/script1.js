@@ -1,10 +1,8 @@
 function taskOne(oldText, newText) {
     const allElements = document.body.querySelectorAll('*');
-    let currentElement;
     for (let elem of allElements) {
         if (elem.textContent === oldText) {
-            currentElement = elem;
-            return currentElement.textContent = newText;
+            return elem.textContent = newText;
         }
     }
 }
