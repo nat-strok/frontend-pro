@@ -6,14 +6,13 @@ function onCreateListWrapper(event) {
         document.body.appendChild(ul);
     }
     event.target.removeEventListener('click', onCreateListWrapper);
+    document.querySelector('#listWrapper').addEventListener('click', onClickChangeItem);
 }
 
 function onCreateListItem(event) {
     event.preventDefault();
     const inputText = document.querySelector('#textInput');
     if (!inputText.value) return;
-
-    const ul = document.querySelector('#listWrapper');
 
     const li = document.createElement('li');
     li.setAttribute('class', 'listItem');
@@ -24,9 +23,8 @@ function onCreateListItem(event) {
     span.setAttribute('class', 'close');
     span.textContent = String.fromCharCode(215);
 
-    ul.append(li);
+    document.querySelector('#listWrapper').append(li);
     li.append(span);
-    ul.addEventListener('click', onClickChangeItem);
 }
 
 function onClickChangeItem(event) {
