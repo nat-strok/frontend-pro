@@ -1,0 +1,101 @@
+body {
+    font-family: arial, sans-serif;
+}
+body * {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+ul,
+form {
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+form {
+    display: flex;
+}
+
+input {
+    width: 70%;
+    padding: 7px;
+    margin-right: 20px;
+}
+
+button,
+button:hover {
+    flex-grow: 1;
+    border: 0 none;
+    background-color: midnightblue;
+    opacity: 1;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+li {
+    display: block;
+    min-height: 30px;
+    margin: 15px 45px 0 0;
+    padding: 5px 35px;
+    position: relative;
+    cursor: pointer;
+}
+
+li.toDo {
+    background-color: lightgoldenrodyellow;
+}
+
+li.done {
+    background-color: lightgreen;
+}
+
+li::before,
+span {
+    display: block;
+    position: absolute;
+}
+
+li::before {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #000;
+    background-color: #fff;
+    top: 7px;
+    left: 6px;
+    font-size: 24px;
+}
+
+li.toDo::before {
+    content: "";
+}
+
+li.done::before {
+    content: "\2714";
+    line-height: .6;
+}
+
+span {
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: -40px;
+    background-color: #9e0e52;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+input,
+button,
+span {
+    border-radius: 7px;
+}
+
+button:hover,
+span:hover {
+    opacity: 0.75;
+}
