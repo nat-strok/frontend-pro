@@ -1,41 +1,43 @@
-function defineListWrapper(ul) {
-    if (!ul) {
-        ul = document.createElement('ul');
+function onCreateListWrapper(event) {
+    event.preventDefault();
+    if (!document.querySelector('#listWrapper')) {
+        const ul = document.createElement('ul');
         ul.setAttribute('id', 'listWrapper');
-        document.body.append(ul);
+        document.body.appendChild(ul);
     }
-    return ul;
+    event.target.removeEventListener('click', onCreateListWrapper);
 }
 
 function onCreateListItem(event) {
     event.preventDefault();
     const inputText = document.querySelector('#textInput');
     if (!inputText.value) return;
+
+    const ul = document.querySelector('#listWrapper');
+
     const li = document.createElement('li');
-    li.setAttribute('class', 'toDo');
-    const span = document.createElement('span');
+    li.setAttribute('class', 'listItem');
     li.textContent = inputText.value;
     inputText.value = '';
+
+    const span = document.createElement('span');
+    span.setAttribute('class', 'close');
     span.textContent = String.fromCharCode(215);
-    listWrapper.append(li);
+
+    ul.append(li);
     li.append(span);
+    ul.addEventListener('click', onClickChangeItem);
 }
 
 function onClickChangeItem(event) {
-    const ul = listWrapper;
-    const li = event.target.closest('li');
-    const span = event.target.closest('span');
-    if (!li) return;
-    if (!span && li) {
-        li.classList.toggle('toDo');
-        li.classList.toggle('done');
+    if (event.target.classList.contains('listItem')) {
+        event.target.classList.toggle('done');
     }
-    if (span) ul.removeChild(li);
+    if (event.target.classList.contains('close')) {
+        event.target.parentElement.remove();
+    }
 }
 
 const btnAdd = document.querySelector('#btnAdd');
-const listWrapper = defineListWrapper(document.querySelector('#listWrapper'));
+btnAdd.addEventListener('click', onCreateListWrapper);
 btnAdd.addEventListener('click', onCreateListItem);
-listWrapper.addEventListener('click', onClickChangeItem);
-
-

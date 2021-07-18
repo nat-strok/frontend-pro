@@ -1,6 +1,7 @@
 body {
     font-family: arial, sans-serif;
 }
+
 body * {
     box-sizing: border-box;
     padding: 0;
@@ -40,14 +41,15 @@ li {
     margin: 15px 45px 0 0;
     padding: 5px 35px;
     position: relative;
+    list-style: none outside none;
     cursor: pointer;
 }
 
-li.toDo {
+li.listItem {
     background-color: lightgoldenrodyellow;
 }
 
-li.done {
+li.listItem.done {
     background-color: lightgreen;
 }
 
@@ -67,11 +69,11 @@ li::before {
     font-size: 24px;
 }
 
-li.toDo::before {
+li.listItem::before {
     content: "";
 }
 
-li.done::before {
+li.listItem.done::before {
     content: "\2714";
     line-height: .6;
 }
