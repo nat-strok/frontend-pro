@@ -3,28 +3,28 @@ function createCalculator(startValue) {
         sum: (n) => startValue += n,
         mult: (n) => startValue *= n,
         sub: (n) => startValue -= n,
-        div: (n) => startValue = startValue / n,
+        div: (n) => startValue /= n,
         set: (n) => startValue = n,
         value: () => startValue
     };
 }
 
-const counter = createCalculator(10);
+const calc = createCalculator(10);
 
 
-console.log(`start value: ${counter.value()}`);
+console.log(`start value: ${calc.value()}`);
 
-counter.sum(5);
-console.log(`sum 5 => ${counter.value()}`);
+calc.sum(5);
+console.log(`sum 5 => ${calc.value()}`);
 
-counter.mult(10);
-console.log(`mult 10 => ${counter.value()}`);
+calc.mult(10);
+console.log(`mult 10 => ${calc.value()}`);
 
-counter.sub(40);
-console.log(`sub 40 => ${counter.value()}`);
+calc.sub(40);
+console.log(`sub 40 => ${calc.value()}`);
 
-counter.div(10);
-console.log(`div 10 => ${counter.value()}`);
+calc.div(10);
+console.log(`div 10 => ${calc.value()}`);
 
-counter.set(100);
-console.log(`set 100 => ${counter.value()}`);
+calc.set(100);
+console.log(`set 100 => ${calc.value()}`);
