@@ -12,8 +12,12 @@ console.log(arrayFill('x', 5));
 function arraySum(arr) {
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === "number") {
+            sum += arr[i];
+        } else {
         for (let j = 0; j < arr[i].length; j++) {
-            sum += arr[i][j];
+                sum += arr[i][j];
+            }
         }
     }
     return sum;
