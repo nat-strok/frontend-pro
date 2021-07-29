@@ -16,7 +16,7 @@ form {
     position: relative;
 }
 
-.counter-block {
+.counters-block {
     display: flex;
     align-items: flex-start;
     margin-top: 20px;
@@ -38,7 +38,7 @@ input {
     padding: 7px 0;
     flex-basis: 230px;
 }
-.counter-txt .counter-outer {
+.counter-txt .counter-value {
     margin-left: 10px;
     font-weight: bolder;
 }
@@ -71,7 +71,7 @@ button:hover {
         padding: 0 20px;
     }
     form,
-    .counter-block {
+    .counters-block {
         flex-direction: column;
     }
     input {
@@ -90,16 +90,4 @@ button:hover {
         padding: 0;
         margin-bottom: -5px;
     }
-}
-
-.error {
-    position: absolute;
-    width: 100%;
-    color: #9e0e52;
-    font-size: 12px;
-    top: 39px;
-    left: 9px;
-}
-.error.hidden {
-    display: none;
 }
