@@ -1,12 +1,22 @@
 function Calc(startValue) {
     this.value = startValue;
-    this.sum = (n) => this.value += n;
-    this.mult = (n) => this.value *= n;
-    this.sub = (n) => this.value -= n;
-    this.div = (n) => this.value /= n;
-    this.set = (n) => this.value = n;
+    this.sum = function (n) {
+        return this.value += n;
+    }
+    this.mult = function (n) {
+        return this.value *= n;
+    }
+    this.sub = function (n) {
+        return this.value -= n;
+    }
+    this.div = function (n) {
+        return this.value /= n;
+    }
+    this.set = function (n) {
+        return this.value = n;
+    }
 }
-
+debugger;
 const calc = new Calc(10);
 
 console.log(`start value: ${calc.value}`);
