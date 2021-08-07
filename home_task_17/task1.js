@@ -1,26 +1,27 @@
 function Hamburger(type) {
-    this.type = type;
-    this.set = [];
+    this.set = [type];
     this.addTopping = function (topping) {
         this.set.push(topping);
     };
 
     this.getPrice = function () {
-        let sum = this.type.price;
+        let sum = 0;
         this.set.forEach(item => sum += item.price);
         return sum;
     };
 
     this.getCalories = function () {
-        let sum = this.type.calories;
+        let sum = 0;
         this.set.forEach(item => sum += item.calories);
         return sum;
     };
 
     this.getText = function () {
-        let text = [];
-        this.set.forEach(item => text.push(item.name));
-        return text.join(', ');
+        let listOfToppings = [];
+        this.set.forEach(item => {
+            if (item.name) listOfToppings.push(item.name);
+        });
+        return listOfToppings.join(', ');
     };
 }
 
@@ -59,7 +60,7 @@ Hamburger.TOPPING_SPICE = {
 Hamburger.TOPPING_SAUCE = {
     price: 20,
     calories: 5,
-    name: 'sauсe'
+    name: 'sauce'
 };
 
 

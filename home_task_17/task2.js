@@ -53,7 +53,7 @@ class Hamburger {
     static TOPPING_SAUCE = {
         price: 20,
         calories: 5,
-        name: 'sauсe'
+        name: 'sauce'
     };
 }
 
