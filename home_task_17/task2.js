@@ -1,10 +1,11 @@
 class Hamburger {
     constructor(type) {
         this.set = [type];
-        this.addTopping = function (topping) {
-            this.set.push(topping);
-        };
     }
+
+    addTopping (topping) {
+        this.set.push(topping);
+    };
 
     getPrice() {
         return this.set.reduce((sum, item) => sum + item.price, 0);
