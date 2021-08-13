@@ -1,0 +1,56 @@
+.container {
+    font-family: arial, sans-serif;
+    font-size: 32px;
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 0;
+    text-align: center;
+}
+
+.container * {
+    box-sizing: border-box;
+}
+
+.clock-block {
+    display: inline-flex;
+    font-size: 72px;
+}
+
+.clock-block span {
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    text-align: center;
+    min-width: 102px;
+}
+
+.clock-block span:not(:last-child) {
+    margin-right: 30px;
+}
+
+.clock-block span:not(:last-child)::before {
+    display: block;
+    position: absolute;
+    content: ":";
+    bottom: 11px;
+    right: -24px;
+    color: lightgray;
+}
+
+.clock-block span:nth-child(2) {
+    color: dimgray;
+}
+
+.clock-block span:last-child {
+    color: darkgray;
+}
+
+.date-line {
+    margin: 20px 0;
+}
+
+.week-line {
+    margin: 20px 0;
+    font-size: 24px;
+}
