@@ -19,8 +19,8 @@ function printTime() {
 }
 
 function updateClock() {
-    printTime();
     setInterval(printTime, 1000);
+    printTime();
 }
 
 document.addEventListener("DOMContentLoaded", updateClock);
