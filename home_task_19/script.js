@@ -1,10 +1,10 @@
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-Date.prototype.getWeek = function () {
-    const startYear = new Date(this.getFullYear(), 0, 1);
+function getWeekNumber(d) {
+    const startYear = new Date(d.getFullYear(), 0, 1);
     let firstWeekPrevDays = startYear.getDay();
-    let daysDiff = (this.getTime() - startYear.getTime()) / (1000 * 60 * 60 * 24);
+    let daysDiff = (d.getTime() - startYear.getTime()) / (1000 * 60 * 60 * 24);
     return Math.ceil((daysDiff + firstWeekPrevDays) / 7);
 }
 
@@ -14,7 +14,7 @@ function printTime() {
     document.body.querySelector('[data-id="min"]').textContent = ('0' + date.getMinutes()).slice(-2);
     document.body.querySelector('[data-id="sec"]').textContent = ('0' + date.getSeconds()).slice(-2);
     document.body.querySelector('[data-id="date"]').textContent = `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-    document.body.querySelector('[data-id="week"]').textContent = `The ${date.getWeek()}th week`;
+    document.body.querySelector('[data-id="week"]').textContent = `The ${getWeekNumber(date)}th week`;
 }
 
 function updateClock() {
