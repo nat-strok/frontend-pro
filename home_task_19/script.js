@@ -3,8 +3,8 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 function getWeekNumber(d) {
     const startYear = new Date(d.getFullYear(), 0, 1);
-    let firstWeekPrevDays = startYear.getDay();
-    let daysDiff = (d.getTime() - startYear.getTime()) / (1000 * 60 * 60 * 24);
+    const firstWeekPrevDays = startYear.getDay();
+    const daysDiff = (d.getTime() - startYear.getTime()) / (1000 * 60 * 60 * 24);
     return Math.ceil((daysDiff + firstWeekPrevDays) / 7);
 }
 
