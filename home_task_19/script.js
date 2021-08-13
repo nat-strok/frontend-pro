@@ -3,9 +3,9 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 function getWeekNumber(d) {
     const startYear = new Date(d.getFullYear(), 0, 1);
-    const firstWeekPrevDays = startYear.getDay();
+    const firstWeekPrevDays = startYear.getDay() - 1;
     const daysDiff = (d.getTime() - startYear.getTime()) / (1000 * 60 * 60 * 24);
-    return Math.ceil((daysDiff + firstWeekPrevDays) / 7);
+    return Math.ceil(Math.abs((daysDiff + firstWeekPrevDays) / 7));
 }
 
 function printTime() {
