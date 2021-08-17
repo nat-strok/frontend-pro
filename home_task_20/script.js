@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const productPrice = addProductForm.querySelector("#productPrice");
         const productNumber = addProductForm.querySelector("#productNumber");
         const productItemTemplate = document.querySelector("#productItemTemplate").innerHTML;
+        const sumCell = productTable.querySelector('[data-id="sum"]');
 
         addProductForm.addEventListener("submit", onAddTaskFormSubmit);
         productTable.addEventListener("click", onDeleteRow);
@@ -25,7 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function addProductRow(product) {
             const html = productItemTemplate.replace(/({{)(name|price|number)(}})/g, (match, p1, p2, p3) => product[p2]);
-            productTable.insertAdjacentHTML("beforeend", html);
+            productTable.querySelector(".summary").insertAdjacentHTML("beforebegin", html);
+        }
+
+        function calculateSum() {
+            const tableContentArray = [];
+            let rows = productTable.rows;
+            for (let i = 1; i < (rows.length - 1); i++) {
+                const rowArray = [];
+                let cells = rows[i].cells;
+                for (let j = 1; j < (cells.length - 1); j++) {
+                    rowArray.push(+cells[j].textContent);
+                }
+                tableContentArray.push(rowArray);
+            }
+            sumCell.textContent = tableContentArray.reduce((sum, item) => sum + item.reduce((res, el) => res * el, 1), 0);
         }
 
         function resetForm() {
@@ -41,13 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     number: productNumber.value
                 };
                 addProductRow(product);
+                calculateSum();
                 resetForm();
             }
         }
 
         function onDeleteRow(e) {
             if (e.target.classList.contains('delete-btn')) e.target.closest('tr').remove();
+            calculateSum();
         }
     }
 );
-
