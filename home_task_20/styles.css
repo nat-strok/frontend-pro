@@ -57,7 +57,7 @@ input:not(.submit-btn) {
 
 .delete-btn {
     display: inline-block;
-    padding: 2px 4px;
+    padding: 0px 4px;
 }
 
 .product-table {
@@ -75,11 +75,15 @@ input:not(.submit-btn) {
 
 .product-table td,
 .product-table th {
-    padding: 2px 5px;
+    padding: 4px 5px;
     border: 1px solid darkgray;
 }
 
 .product-table th:first-child,
 .product-table td:first-child {
     text-align: left;
+}
+
+.summary td {
+    font-weight: 700;
 }
