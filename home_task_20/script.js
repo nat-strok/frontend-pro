@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
         function calculateSum() {
             const tableContentArray = [];
             let rows = productTable.rows;
-            for (let i = 1; i < (rows.length - 1); i++) {
+            for (let i = 1; i < rows.length - 1; i++) {
                 const rowArray = [];
                 let cells = rows[i].cells;
-                for (let j = 1; j < (cells.length - 1); j++) {
+                for (let j = 1; j < cells.length - 1; j++) {
                     rowArray.push(+cells[j].textContent);
                 }
                 tableContentArray.push(rowArray);
