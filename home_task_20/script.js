@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function addProductRow(product) {
             const html = productItemTemplate.replace(/({{)(name|price|number)(}})/g, (match, p1, p2, p3) => product[p2]);
-            productTable.querySelector(".summary").insertAdjacentHTML("beforebegin", html);
+            sumCell.closest('tr').insertAdjacentHTML("beforebegin", html);
         }
 
         function calculateSum() {
