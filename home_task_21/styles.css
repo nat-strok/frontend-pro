@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    font-family: arial, sans-serif;
+    font-size: 15px;
+    max-width: 500px;
+    padding: 0 20px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+li {
+    background-color: lightgrey;
+    font-size: 15px;
+    text-align: left;
+    display: block;
+    min-height: 25px;
+    margin: 15px 0 0 0;
+    padding: 3px 30px;
+    position: relative;
+    list-style: none outside none;
+    cursor: pointer;
+}
+
+li.whatToDo {
+    color: #9e0e52;
+}
+
+li.done {
+    color: seagreen;
+}
+
+li::before,
+.close {
+    display: block;
+    position: absolute;
+}
+
+li::before {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    top: 7px;
+    left: 6px;
+    font-size: 18px;
+    color: #000;
+    content: "";
+}
+
+li.done::before {
+    content: "\2714";
+    line-height: .6;
+}
+
+.close {
+    width: 25px;
+    height: 25px;
+    top: 0;
+    right: 0;
+    color: #9e0e52;
+    font-size: 25px;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.close:hover {
+    animation: rotate-scale-up 0.65s linear both;
+}
+
+@keyframes rotate-scale-up {
+    0% {
+        transform: scale(1) rotateZ(0)
+    }
+    50% {
+        transform: scale(2) rotateZ(180deg)
+    }
+    100% {
+        transform: scale(1) rotateZ(360deg)
+    }
+}
