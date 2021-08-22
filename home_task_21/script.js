@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const listToDo = document.querySelector('#listToDo');
     const loadToDos = document.querySelector('#loadToDos');
     loadToDos.addEventListener('click', getListToDo);
+    listToDo.addEventListener('click', onClickChangeItem);
 
     function getListToDo() {
         fetch("https://jsonplaceholder.typicode.com/todos")
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleToDo(data) {
         data.forEach(item => addItem(item));
-        listToDo.addEventListener('click', onClickChangeItem);
     }
 
     function addItem(item) {
