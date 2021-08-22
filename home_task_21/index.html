@@ -11,11 +11,12 @@
 <body>
 
 <div class="container">
+    <button id="loadToDos">Load ToDos</button>
     <ul id="listToDo"></ul>
 </div>
 
 <script type="text/template" id="itemTemplate">
-    <li class="{{completed}}" data-id="{{id}}">{{title}}<span class="close">×</span></li>
+    <li class="to-do{{completed}}" data-id="{{id}}">{{title}}<span class="close">×</span></li>
 </script>
 
 </body>

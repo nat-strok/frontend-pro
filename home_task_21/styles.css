@@ -13,8 +13,24 @@
     text-align: center;
 }
 
-li {
-    background-color: lightgrey;
+button {
+    font-size: 24px;
+    margin: 30px auto;
+    border-radius: 3px;
+    border: 0 none;
+    padding: 8px 20px;
+    font-weight: 700;
+    background-color: #176161;
+    color: #fff;
+    cursor: pointer;
+    opacity: .85;
+}
+button:hover {
+    opacity: 1;
+}
+
+.to-do {
+    background-color: rgba(211, 211, 211, 0.6);
     font-size: 15px;
     text-align: left;
     display: block;
@@ -24,23 +40,20 @@ li {
     position: relative;
     list-style: none outside none;
     cursor: pointer;
-}
-
-li.whatToDo {
     color: #9e0e52;
 }
 
-li.done {
+.to-do.done {
     color: seagreen;
 }
 
-li::before,
+.to-do::before,
 .close {
     display: block;
     position: absolute;
 }
 
-li::before {
+.to-do::before {
     width: 10px;
     height: 10px;
     border: 1px solid #000;
@@ -52,35 +65,25 @@ li::before {
     content: "";
 }
 
-li.done::before {
+.to-do.done::before {
     content: "\2714";
     line-height: .6;
 }
 
 .close {
     width: 25px;
-    height: 25px;
+    height: 100%;
     top: 0;
     right: 0;
     color: #9e0e52;
+    background-color: rgba(158, 14, 82, 0.3);
     font-size: 25px;
     line-height: 1;
     text-align: center;
     cursor: pointer;
+    opacity: .75;
 }
 
 .close:hover {
-    animation: rotate-scale-up 0.65s linear both;
-}
-
-@keyframes rotate-scale-up {
-    0% {
-        transform: scale(1) rotateZ(0)
-    }
-    50% {
-        transform: scale(2) rotateZ(180deg)
-    }
-    100% {
-        transform: scale(1) rotateZ(360deg)
-    }
+    opacity: 1;
 }
