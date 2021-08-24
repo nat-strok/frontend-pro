@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let itemTemplate = document.querySelector('#itemTemplate').innerHTML;
+    const itemTemplate = document.querySelector('#itemTemplate').innerHTML;
     const listToDo = document.querySelector('#listToDo');
-    const loadToDos = document.querySelector('#loadToDos');
-    loadToDos.addEventListener('click', getListToDo);
+    const btnLoadToDos = document.querySelector('#btnLoadToDos');
+    btnLoadToDos.addEventListener('click', getListToDo);
     listToDo.addEventListener('click', onClickChangeItem);
 
     function getListToDo() {
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then((res) => res.json())
             .then((data) => handleToDo(data))
             .catch((error) => console.log(error.message))
-            .finally(() => loadToDos.remove());
+            .finally(() => btnLoadToDos.remove());
     }
 
     function handleToDo(data) {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function addItem(item) {
         let html = itemTemplate.replace('{{title}}', item.title);
         html = html.replace('{{id}}', item.id);
-        html = !!item['completed'] ? html.replace('{{completed}}', ' done') : html.replace('{{completed}}', '');
+        html = item['completed'] ? html.replace('{{completed}}', ' done') : html.replace('{{completed}}', '');
         listToDo.insertAdjacentHTML('beforeend', html);
     }
 
