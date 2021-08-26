@@ -19,7 +19,6 @@ form,
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    font-size: 15px;
 }
 form {
     gap: 20px;
@@ -33,6 +32,7 @@ form {
 input {
     padding: 7px;
     border-radius: 3px;
+    font-size: 15px;
 }
 
 input:not(.submit-btn) {
@@ -47,7 +47,6 @@ input:not(.submit-btn) {
 .submit-btn {
     border: 0 none;
     padding: 8px 20px;
-    font-weight: 700;
     background-color: darkslategray;
     color: #fff;
 }
