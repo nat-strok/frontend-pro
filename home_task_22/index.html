@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>ht_22</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="container">
+
+    <form id="getWeatherForm">
+        <input type="text" id="cityName" placeholder="Введите город"/>
+        <input type="submit" class="submit-btn" value="Показать погоду"/>
+    </form>
+
+
+<script type="text/template" id="resultTemplate">
+    <div id="result" class="result-block">
+        <img src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="">
+        <div>Погода в городе {{cityName}} на сегодня: <br /> {{weatherDescription}}, температура воздуха {{temp}} &#176;C, ветер {{deg}}, {{speed}} м/с. Восход в {{sunrise}}, закат в {{sunset}}</div>
+    </div>
+</script>
+
+</body>
+</html>
