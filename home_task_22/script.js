@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onGetWeather(e) {
         e.preventDefault();
-        removeOldWeatherBlock(document.querySelector('#result'));
-        console.log(cityName);
+        removePreviousBlock(document.querySelector('#result'));
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=e21112e76750a170352ebe5709d21828&lang=ru`)
             .then((res) => res.json())
             .then((data) => handleWeather(data))
@@ -16,30 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleWeather(data) {
-        let html = resultTemplate.replace('{{cityName}}', cityName.value)
+        console.log(+data.wind.deg);
+        let html = resultTemplate.replace('{{cityName}}', data.name)
             .replace('{{icon}}', data.weather[0].icon)
             .replace('{{weatherDescription}}', data.weather[0].description)
             .replace('{{temp}}', convertToCelsius(+data.main.temp))
-            .replace('{{deg}}', degreesToDirection(+data.wind.deg))
-            .replace('{{speed}}', +data.wind.speed)
-            .replace('{{sunrise}}', new Date(+data.sys.sunrise * 1000).toLocaleTimeString())
-            .replace('{{sunset}}', new Date(+data.sys.sunset * 1000).toLocaleTimeString());
+            .replace('{{deg}}', convertToDirection(+data.wind.deg))
+            .replace('{{speed}}', Math.round(+data.wind.speed));
         getWeatherForm.insertAdjacentHTML('afterend', html);
-
     }
 
     function convertToCelsius(num) {
         return Math.round(num -= 273.15);
     }
 
-    function degreesToDirection(num) {
+    function convertToDirection(num) {
         let directions = ['северный', 'северо-восточный', 'восточный', 'юго-восточный', 'южный', 'юго-западный', 'западный', 'северо-западный'];
-        num = num / 45;
-        num = Math.round(num);
+        num = Math.round(num / 45);
+        num = (num + 8) % 8;
         return directions[num];
     }
 
-    function removeOldWeatherBlock(oldBlock) {
+    function removePreviousBlock(oldBlock) {
         if (oldBlock) oldBlock.remove();
     }
 
