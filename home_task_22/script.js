@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         removeOldWeatherBlock(document.querySelector('#result'));
         console.log(cityName);
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=e21112e76750a170352ebe5709d21828`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=e21112e76750a170352ebe5709d21828&lang=ru`)
             .then((res) => res.json())
             .then((data) => handleWeather(data))
             .catch((error) => console.log(error.message))
