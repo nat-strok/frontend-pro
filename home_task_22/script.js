@@ -10,12 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=e21112e76750a170352ebe5709d21828&lang=ru`)
             .then((res) => res.json())
             .then((data) => handleWeather(data))
-            .catch((error) => console.log(error.message))
+            .catch((error) => alert('Произошла ошибка, попробуйте ввести другой город'))
             .finally(() => resetForm());
     }
 
     function handleWeather(data) {
-        console.log(+data.wind.deg);
         let html = resultTemplate.replace('{{cityName}}', data.name)
             .replace('{{icon}}', data.weather[0].icon)
             .replace('{{weatherDescription}}', data.weather[0].description)
