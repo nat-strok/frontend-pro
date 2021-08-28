@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleWeather(data) {
-        let html = resultTemplate.replace('{{cityName}}', data.name)
+        const html = resultTemplate.replace('{{cityName}}', data.name)
             .replace('{{date}}', formatDateRu(data.dt))
             .replace('{{icon}}', data.weather[0].icon)
             .replace('{{weatherDescription}}', data.weather[0].description)
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function convertToDirection(num) {
-        let directions = ['северный', 'северо-восточный', 'восточный', 'юго-восточный', 'южный', 'юго-западный', 'западный', 'северо-западный'];
+        const directions = ['северный', 'северо-восточный', 'восточный', 'юго-восточный', 'южный', 'юго-западный', 'западный', 'северо-западный'];
         num = Math.round(num / 45);
         num = (num + 8) % 8;
         return directions[num];
