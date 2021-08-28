@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onGetWeather(e) {
         e.preventDefault();
-        removePreviousBlock(document.querySelector('#result'));
+        removePreviousBlock();
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=e21112e76750a170352ebe5709d21828&lang=ru`)
             .then((res) => res.json())
             .then((data) => handleWeather(data))
@@ -16,12 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleWeather(data) {
         let html = resultTemplate.replace('{{cityName}}', data.name)
+            .replace('{{date}}', formatDateRu(data.dt))
             .replace('{{icon}}', data.weather[0].icon)
             .replace('{{weatherDescription}}', data.weather[0].description)
-            .replace('{{temp}}', convertToCelsius(+data.main.temp))
-            .replace('{{deg}}', convertToDirection(+data.wind.deg))
-            .replace('{{speed}}', Math.round(+data.wind.speed));
+            .replace('{{temp}}', convertToCelsius(data.main.temp))
+            .replace('{{deg}}', convertToDirection(data.wind.deg))
+            .replace('{{speed}}', Math.round(data.wind.speed));
         getWeatherForm.insertAdjacentHTML('afterend', html);
+    }
+
+    function formatDateRu(num) {
+        num *= 1000;
+        const options = {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        };
+        return new Date(num).toLocaleDateString('ru-RU', options);
     }
 
     function convertToCelsius(num) {
@@ -35,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return directions[num];
     }
 
-    function removePreviousBlock(oldBlock) {
+    function removePreviousBlock() {
+        const oldBlock = document.querySelector('#result');
         if (oldBlock) oldBlock.remove();
     }
 
