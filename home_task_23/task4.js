@@ -90,5 +90,5 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    let calc = new Calc();
+    new Calc();
 });
