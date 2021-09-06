@@ -1,0 +1,134 @@
+* {
+    font-family: arial, sans-serif;
+    font-size: 16px;
+}
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+:root {
+    --tile-size: 70px;
+}
+.main {
+    min-width: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.game-container {
+    display: flex;
+    column-gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    margin: 0 auto;
+}
+.tiles-container {
+    width: calc(var(--tile-size) * 4 + 14px);
+    min-height: calc(var(--tile-size) * 4 + 14px);
+    gap: 2px;
+    padding: 4px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 9px solid lightgrey;
+    color: #000;
+    border-radius: 15px;
+}
+.control-panel {
+    width: 100px;
+}
+
+.tile {
+    font-size: 24px;
+    height: var(--tile-size);
+    width: var(--tile-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.tile:hover {
+    background-color: rgba(211, 211, 211, 0.3);
+}
+
+button {
+    border-radius: 5px;
+    border: 0 none;
+    padding: 8px 20px;
+    background-color: lightgrey;
+    cursor: pointer;
+    opacity: .85;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+button:hover {
+    opacity: 1;
+}
+
+#success {
+    position: fixed;
+    max-width: 300px;
+    border: 1px #000 solid;
+    border-radius: 5px;
+    padding: 80px;
+    background: white;
+    font-size: 18px;
+    text-align: center;
+    animation: swirl-in-fwd 0.6s ease-out both;
+}
+.overlay {
+    display: none;
+    background-color: #000;
+    opacity: .3;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#success,
+.overlay {
+    display: none;
+}
+
+.visible #success,
+.visible .overlay {
+    display: block;
+}
+
+.close {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 5px;
+    right: 5px;
+    color: #000;
+    font-size: 30px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+    opacity: .75;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+@keyframes swirl-in-fwd {
+    0% {
+        transform: rotate(-540deg) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
