@@ -8,13 +8,11 @@ function initGame() {
     TILES.length = 0; // clear all tiles in the array
     setInitCounter();
     let tileIndex = 0;
-// const randomIndex = getRandomIndex();
-    const randomIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // delete
+    const randomIndex = getRandomIndex();
     for (let i = 0; i < 4; i++) {
         TILES[i] = [];
         for (let j = 0; j < 4; j++) {
-            // tileIndex = randomIndex();
-            tileIndex = randomIndex.shift(); // delete
+            tileIndex = randomIndex();
             TILES[i].push(createTileEl(tileIndex));
         }
     }
