@@ -73,6 +73,15 @@ button:hover {
     opacity: 1;
 }
 
+.counter {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.counter span {
+    font-weight: bold;
+}
+
 #success {
     position: fixed;
     max-width: 300px;

@@ -1,20 +1,20 @@
 const TILES = [];
+let counter;
 const tilesContainer = document.getElementById("tiles");
-const closeMessageElems = Array.from(document.querySelectorAll('[data-id="close"]'));
-closeMessageElems.map(el => el.addEventListener("click", hideSuccessMessage));
 
 function initGame() {
     tilesContainer.innerHTML = "";
     tilesContainer.addEventListener("click", onTileClick);
     TILES.length = 0; // clear all tiles in the array
+    setInitCounter();
     let tileIndex = 0;
-    const randomIndex = getRandomIndex();
-    // const randomIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // delete
+// const randomIndex = getRandomIndex();
+    const randomIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // delete
     for (let i = 0; i < 4; i++) {
         TILES[i] = [];
         for (let j = 0; j < 4; j++) {
-            tileIndex = randomIndex();
-            // tileIndex = randomIndex.shift(); // delete
+            // tileIndex = randomIndex();
+            tileIndex = randomIndex.shift(); // delete
             TILES[i].push(createTileEl(tileIndex));
         }
     }
@@ -23,18 +23,6 @@ function initGame() {
     } else {
         initGame()
     }
-}
-
-function isSolvable(arr) {
-    let count = 0;
-    arr = arr.flat().map(el => +el.textContent);
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = i + 1; j < arr.length; j++) {
-            if (arr[i] > arr[j])
-                count++;
-        }
-    }
-    return count % 2;
 }
 
 function getRandomIndex() {
@@ -64,42 +52,26 @@ function renderTiles() {
     }
 }
 
-function showSuccessMessage() {
-    document.body.classList.add('visible');
-}
-
-function hideSuccessMessage() {
-    document.body.classList.remove('visible');
-    initGame();
-}
-
 function onTileClick(e) {
     if (e.target.classList.contains("tile")) {
         const id = +e.target.textContent;
         if (id) {
             swapTiles(id);
+            changeCounter();
         }
     }
     renderTiles();
-    if (isComplete()) showSuccessMessage();
-}
-
-function isComplete() {
-    let tiles = document.querySelectorAll('.tile');
-    tiles = Array.from(tiles).map(el => +el.textContent);
-    if (tiles[tiles.length - 1]) return false;
-    for (let i = 0; i < tiles.length - 1; i++) {
-        if (tiles[i] != i + 1)
-            return false;
+    if (isComplete()) {
+        const successMessage = new SuccessMessage(counter);
+        successMessage.create();
     }
-    return true;
 }
 
 function swapTiles(id) {
     const [tileX, tileY] = findTileCoordById(id);
     const [emptyX, emptyY] = findEmptyTileCoords();
 
-    // are they neibors
+    // are they neighbors
     if (
         (tileX === emptyX && Math.abs(tileY - emptyY) === 1) ||
         (tileY === emptyY && Math.abs(tileX - emptyX) === 1)
@@ -127,5 +99,59 @@ function findTileCoordById(id) {
                 return [i, j];
             }
         }
+    }
+}
+
+function isSolvable(arr) {
+    let count = 0;
+    arr = arr.flat().map(el => +el.textContent);
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j])
+                count++;
+        }
+    }
+    return count % 2;
+}
+
+function isComplete() {
+    let tiles = document.querySelectorAll('.tile');
+    tiles = Array.from(tiles).map(el => +el.textContent);
+    if (tiles[tiles.length - 1]) return false;
+    for (let i = 0; i < tiles.length - 1; i++) {
+        if (tiles[i] !== i + 1)
+            return false;
+    }
+    return true;
+}
+
+function setInitCounter() {
+    counter = 0;
+    document.body.querySelector('.counter span').textContent = counter;
+}
+
+function changeCounter() {
+    counter++;
+    document.body.querySelector('.counter span').textContent++;
+}
+
+class SuccessMessage {
+    constructor(counter) {
+        this.counter = counter;
+        this.overlay = `<div data-id="close" class="overlay"></div>`;
+        this.content = `<div id="success"><p>Congratulations!</p><p>You have won in <span data-id="movesQuant">${this.counter}</span> moves</p><span data-id="close" class="close">×</span></div>`;
+    }
+
+    create() {
+        const html = this.overlay + this.content;
+        document.body.insertAdjacentHTML('beforeend', html);
+        this.closerElements = document.body.querySelectorAll('[data-id="close"]');
+        this.closerElements.forEach(el => el.addEventListener('click', e => this.hide(e)));
+        document.body.classList.add('visible');
+    }
+
+    hide(e) {
+        document.body.classList.remove('visible');
+        initGame();
     }
 }
