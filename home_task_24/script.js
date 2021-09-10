@@ -136,22 +136,23 @@ function changeCounter() {
 }
 
 class SuccessMessage {
+    static el(el) {
+        return document.querySelectorAll(el);
+    }
+
     constructor(counter) {
         this.counter = counter;
-        this.overlay = `<div data-id="close" class="overlay"></div>`;
-        this.content = `<div id="success"><p>Congratulations!</p><p>You have won in <span data-id="movesQuant">${this.counter}</span> moves</p><span data-id="close" class="close">×</span></div>`;
+        this.overlay = `<div data-act="close" data-id="success" class="overlay"></div>`;
+        this.content = `<div data-id="success" class="success-popup"><p>Congratulations!</p><p>You have won in <span data-id="movesQuant">${this.counter}</span> moves</p><span data-act="close" class="close">×</span></div>`;
     }
 
     create() {
-        const html = this.overlay + this.content;
-        document.body.insertAdjacentHTML('beforeend', html);
-        this.closerElements = document.body.querySelectorAll('[data-id="close"]');
-        this.closerElements.forEach(el => el.addEventListener('click', e => this.hide(e)));
-        document.body.classList.add('visible');
+        document.body.insertAdjacentHTML('beforeend', this.overlay + this.content);
+        SuccessMessage.el('[data-act="close"]').forEach(el => el.addEventListener('click', e => this.hide(e)));
     }
 
     hide(e) {
-        document.body.classList.remove('visible');
+        SuccessMessage.el('[data-id="success"]').forEach(el => el.remove());
         initGame();
     }
 }

@@ -82,7 +82,7 @@ button:hover {
     font-weight: bold;
 }
 
-#success {
+.success-popup {
     position: fixed;
     max-width: 300px;
     border: 1px #000 solid;
@@ -94,7 +94,6 @@ button:hover {
     animation: swirl-in-fwd 0.6s ease-out both;
 }
 .overlay {
-    display: none;
     background-color: #000;
     opacity: .3;
     width: 100vw;
@@ -102,15 +101,6 @@ button:hover {
     position: fixed;
     top: 0;
     left: 0;
-}
-#success,
-.overlay {
-    display: none;
-}
-
-.visible #success,
-.visible .overlay {
-    display: block;
 }
 
 .close {
