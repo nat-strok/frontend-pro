@@ -6,7 +6,7 @@ function initGame() {
     tilesContainer.innerHTML = "";
     tilesContainer.addEventListener("click", onTileClick);
     TILES.length = 0; // clear all tiles in the array
-    setInitCounter();
+    initCounter();
     let tileIndex = 0;
     const randomIndex = getRandomIndex();
     for (let i = 0; i < 4; i++) {
@@ -123,7 +123,7 @@ function isComplete() {
     return true;
 }
 
-function setInitCounter() {
+function initCounter() {
     counter = 0;
     document.body.querySelector('.counter span').textContent = counter;
 }
