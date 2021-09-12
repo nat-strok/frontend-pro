@@ -1,5 +1,6 @@
 const TILES = [];
 let counter;
+const countContainer = document.body.querySelector('.counter span');
 const tilesContainer = document.getElementById("tiles");
 
 function initGame() {
@@ -125,12 +126,12 @@ function isComplete() {
 
 function initCounter() {
     counter = 0;
-    document.body.querySelector('.counter span').textContent = counter;
+    countContainer.textContent = counter;
 }
 
 function changeCounter() {
     counter++;
-    document.body.querySelector('.counter span').textContent++;
+    countContainer.textContent = counter;
 }
 
 class SuccessMessage {
