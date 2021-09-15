@@ -56,7 +56,6 @@ function onTileClick(e) {
         const id = +e.target.textContent;
         if (id) {
             swapTiles(id);
-            changeCounter();
         }
     }
     renderTiles();
@@ -78,6 +77,7 @@ function swapTiles(id) {
         const temp = TILES[tileX][tileY];
         TILES[tileX][tileY] = TILES[emptyX][emptyY];
         TILES[emptyX][emptyY] = temp;
+        changeCounter();
     }
 }
 
