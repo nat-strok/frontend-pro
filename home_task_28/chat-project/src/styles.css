@@ -1,0 +1,176 @@
+.container {
+    font-family: arial, sans-serif;
+    font-size: 16px;
+    max-width: 740px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    height: calc(100vh - 100px);
+}
+
+.container * {
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #9e0e52;
+    --blue: #8ec5ff;
+    --dark-blue: #157ace;
+    --grey: grey;
+    --radius: 7px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    position: relative;
+    gap: 20px;
+}
+
+.chat-form {
+    width: 100%;
+}
+
+input[type=text],
+textarea,
+.users-block {
+    display: inline-flex;
+    padding: var(--radius);
+    width: 320px;
+    flex: 1 0 320px;
+}
+
+input[type=text],
+textarea {
+    border-radius: var(--radius);
+}
+
+.error {
+    border-color: var(--red);
+    border-style: solid;
+    border-width: 2px;
+    animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+input[type=text]::-webkit-input-placeholder {color: var(--grey);}
+input[type=text]::-moz-placeholder {color: var(--grey);}
+input[type=text]:-ms-input-placeholder {color: var(--grey);}
+input[type=text]::-ms-input-placeholder {color: var(--grey);}
+input[type=text]::placeholder {color: var(--grey);}
+
+input[type=text].error::-webkit-input-placeholder {color: var(--red);}
+input[type=text].error::-moz-placeholder {color: var(--red);}
+input[type=text].error:-ms-input-placeholder {color: var(--red);}
+input[type=text].error::-ms-input-placeholder {color: var(--red);}
+input[type=text].error::placeholder {color: var(--red);}
+
+input[type=text]:focus::-webkit-input-placeholder {color: transparent;}
+input[type=text]:focus::-moz-placeholder {color: transparent;}
+input[type=text]:focus:-ms-input-placeholder {color: transparent;}
+input[type=text]:focus::-ms-input-placeholder {color: transparent;}
+input[type=text]:focus::placeholder {color: transparent;}
+
+button,
+button:hover {
+    border: 0 none;
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    height: 38px;
+    font-size: 14px;
+    font-weight: bolder;
+    cursor: pointer;
+    width: 100px;
+    background-color: var(--blue);
+    flex-grow: 0;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#btnLogout {
+    background-color: var(--red);
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.reconnect {
+    flex: 1 0 100%;
+}
+
+.reconnect input[type=checkbox] {
+    margin-right: var(--radius);
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.chat-head-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.chat-text-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: auto;
+    max-height: 100%;
+}
+
+.users-block {
+    padding: 0;
+}
+
+.users-block strong {
+    padding-right: var(--radius);
+    margin-right: var(--radius);
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: var(--grey);
+}
+
+.chat-history {
+    padding-right: 20px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.chat-history p:first-child {
+    animation: fade-in-top .3s cubic-bezier(.39,.575,.565,1.000) both;
+}
+
+.user-name,
+.my-name {
+    font-weight: bold;
+    border-radius: var(--radius);
+    margin-right: var(--radius);
+    color: var(--dark-blue);
+}
+
+.user-name.my-name {
+    color: var(--red);
+}
+
+@keyframes shake-bottom {
+    0%, 100% {transform: rotate(0deg); transform-origin: 50% 100%;}
+    10% {transform: rotate(2deg);}
+    20%, 40%, 60% {transform: rotate(-4deg);}
+    30%, 50%, 70% {transform: rotate(4deg);}
+    80% {transform: rotate(-2deg);}
+    90% {transform: rotate(2deg);}
+}
+
+@keyframes fade-in-top{0%{transform:translateY(-50px);opacity:0}100%{transform:translateY(0);opacity:1}}

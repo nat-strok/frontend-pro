@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Chat</title>
+</head>
+<body class="container">
+
+<form id="loginForm" class="hidden">
+    <input name="inputName" type="text" placeholder="Enter your name"/>
+    <button>Login</button>
+</form>
+
+<div id="chatContainer" class="chat-box hidden">
+
+    <div class="chat-head-wrapper">
+        <div class="users-block"><strong>List of users:</strong></div>
+        <button id="btnLogout" name="btnLogout">Logout</button>
+
+        <form id="messageForm" class="chat-form">
+            <label class="reconnect"><input id="reconnect" type="checkbox" checked/>hold connection</label>
+            <textarea name="inputMessage" rows="6" placeholder="Write a message here"></textarea>
+            <button id="btnSend">Send</button>
+        </form>
+    </div>
+
+    <div class="chat-text-wrapper">
+        <div id="chatHistory" class="chat-history"></div>
+    </div>
+
+</div>
+</body>
+</html>
