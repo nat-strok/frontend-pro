@@ -42,7 +42,7 @@ function sendMessage(e) {
     e.preventDefault();
     const message = e.target.inputMessage.value;
     if (message.trim()) {
-        chat.sendMessage('message', myName, message);
+        chat.outgoingMessage('message', myName, message);
         new ChatMessage(myName, message).createMessage();
     }
     e.target.reset();

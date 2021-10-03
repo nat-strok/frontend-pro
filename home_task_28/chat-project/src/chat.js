@@ -19,7 +19,7 @@ export class Chat {
 
     onOpen() {
         console.log('Socket is open.');
-        this.sendMessage('system message', 'Server', 'New user connected');
+        this.outgoingMessage('system message', 'Server', 'New user connected');
     }
 
     onError() {
@@ -58,7 +58,7 @@ export class Chat {
         }
     }
 
-    sendMessage(type, name, message) {
+    outgoingMessage(type, name, message) {
         const newMessage = {type: type, payload: {username: name, message: message}};
         this.wsChat.send(JSON.stringify(newMessage));
         if (type === 'message') {
