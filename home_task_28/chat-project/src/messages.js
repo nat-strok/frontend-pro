@@ -1,6 +1,6 @@
-import {myName} from './app';
+import {myName, chat} from "./app";
 
-export class ChatMessage {
+export default class ChatMessage {
     constructor(name, message) {
         this.parentBlock = document.body.querySelector('#chatHistory');
         this.name = name;
@@ -14,4 +14,14 @@ export class ChatMessage {
         this.parentBlock.insertAdjacentHTML('beforeend', `<p><span class="${this.userClass}">${this.name}:</span> ${this.message}</p>`);
         this.parentBlock.querySelector('p:last-child').scrollIntoView({behavior: 'smooth', block: 'end'})
     }
+}
+
+export function sendMessage(e) {
+    e.preventDefault();
+    const message = e.target.inputMessage.value;
+    if (message.trim()) {
+        chat.outgoingMessage('message', myName, message);
+        new ChatMessage(myName, message).createMessage();
+    }
+    e.target.reset();
 }

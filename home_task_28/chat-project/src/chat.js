@@ -1,9 +1,8 @@
 import {myName} from './app';
-import {updateChatHistory} from './storage';
-import {updateUserBlock} from './dom-el-fns';
-import {ChatMessage} from './chat-msg-tpl';
+import {updateChatHistory, updateUserBlock} from './history';
+import ChatMessage from './messages';
 
-export class Chat {
+export default class Chat {
     constructor() {
         this.url = 'wss://fep-app.herokuapp.com/';
         this.reconnect = document.body.querySelector('#reconnect');
@@ -39,7 +38,6 @@ export class Chat {
     closeConnection() {
         this.reconnect.removeAttribute('checked');
         this.wsChat.close();
-
     }
 
     incomingMessageHandler(e) {

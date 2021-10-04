@@ -37,16 +37,16 @@ form {
 }
 
 input[type=text],
-textarea,
 .users-block {
     display: inline-flex;
     padding: var(--radius);
     width: 320px;
     flex: 1 0 320px;
+    font-family: arial, sans-serif;
+    font-size: 16px;
 }
 
-input[type=text],
-textarea {
+input[type=text] {
     border-radius: var(--radius);
 }
 
@@ -96,7 +96,6 @@ button:hover {
 #btnLogout {
     background-color: var(--red);
     color: #fff;
-    margin-bottom: 20px;
 }
 
 .reconnect {
@@ -146,7 +145,7 @@ button:hover {
 }
 
 .chat-history {
-    padding: 0 20px 20px 40px;
+    padding: 0 20px;
     overflow-y: auto;
     height: 100%;
 }

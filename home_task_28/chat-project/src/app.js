@@ -1,21 +1,16 @@
 import './styles.css';
 
-import {sendMessage, logIn, logOut} from './dom-el-fns';
-import {Chat} from './chat';
+import logIn from './authorization';
+import Chat from './chat';
 
-document.addEventListener("DOMContentLoaded", startChat);
+window.onload = function() {startChat('#loginForm', '#chatContainer')};
 
-export let myName = localStorage.getItem("username"),
-    loginForm,
-    chatBlock,
-    chat;
+export let myName = localStorage.getItem("username");
+export let chat = new Chat;
 
-function startChat() {
-    loginForm = document.body.querySelector('#loginForm');
-    chatBlock = document.body.querySelector('#chatContainer');
-    chat = new Chat;
+function startChat(loginFormId, chatBlockId) {
+    const loginForm = document.body.querySelector(loginFormId);
+    const chatBlock = document.body.querySelector(chatBlockId);
+    logIn(loginForm, chatBlock);
     chat.start();
-    logIn();
-    document.body.querySelector('#messageForm').addEventListener('submit', sendMessage);
-    document.body.querySelector('#btnLogout').addEventListener('click', logOut);
 }

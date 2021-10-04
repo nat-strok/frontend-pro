@@ -1,19 +1,20 @@
-import {myName, chatBlock, loginForm, chat} from "./app";
-import {loadChatHistory, updateUserInfo} from "./storage";
-import {ChatMessage} from './chat-msg-tpl';
-export {logIn, logOut, getLogin, updateUserBlock, sendMessage};
+import {myName, chat} from "./app";
+import {loadChatHistory, updateUserInfo} from "./history";
+import {sendMessage} from "./messages";
 
-function logIn() {
+export default function logIn(loginForm, chatBlock) {
     if (myName) {
         chatBlock.classList.remove('hidden');
         loadChatHistory();
     } else {
-        loginForm.addEventListener('submit', getLogin);
+        loginForm.addEventListener('submit', (e) => getLogin(e, loginForm, chatBlock));
         loginForm.classList.remove('hidden');
     }
+    document.body.querySelector('#messageForm').addEventListener('submit', sendMessage);
+    document.body.querySelector('#btnLogout').addEventListener('click', logOut);
 }
 
-function getLogin(e) {
+function getLogin(e, loginForm, chatBlock) {
     e.preventDefault();
     loginForm.inputName.addEventListener('focus', (e) => e.target.classList.remove('error'));
     const nameInput = loginForm.inputName.value;
@@ -32,18 +33,4 @@ function logOut() {
     localStorage.clear();
     chat.closeConnection();
     window.location.reload();
-}
-
-function updateUserBlock(date) {
-    document.body.querySelector('.users-block').append(date);
-}
-
-function sendMessage(e) {
-    e.preventDefault();
-    const message = e.target.inputMessage.value;
-    if (message.trim()) {
-        chat.outgoingMessage('message', myName, message);
-        new ChatMessage(myName, message).createMessage();
-    }
-    e.target.reset();
 }
