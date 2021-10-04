@@ -4,8 +4,8 @@ import Chat from "./chat";
 import {loadChatHistory, updateUserInfo} from "./history";
 
 
-export const chat = new Chat;
-const myName = localStorage.getItem("username");
+const chat = new Chat;
+let myName = localStorage.getItem("username");
 
 window.addEventListener("load", logIn);
 
@@ -14,7 +14,7 @@ function logIn() {
         loginForm: document.body.querySelector('#loginForm'),
         chatBlock: document.body.querySelector('#chatContainer')
     }
-    if (localStorage.getItem("username")) {
+    if (myName) {
         mainBlock.chatBlock.classList.remove('hidden');
         loadChatHistory();
     } else {
@@ -35,6 +35,7 @@ function getLogin(e, mainBlock) {
         mainBlock.chatBlock.classList.remove('hidden');
         mainBlock.loginForm.classList.add('hidden');
         updateUserInfo(nameInput);
+        myName = nameInput;
     } else {
         mainBlock.loginForm.reset();
         mainBlock.loginForm.inputName.classList.add('error');
