@@ -1,4 +1,4 @@
-import {myName} from './app';
+import {myName} from './authorization';
 import {updateChatHistory, updateUserBlock} from './history';
 import ChatMessage from './messages';
 

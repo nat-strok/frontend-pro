@@ -5,7 +5,6 @@ import Chat from './chat';
 
 window.onload = function() {startChat('#loginForm', '#chatContainer')};
 
-export let myName = localStorage.getItem("username");
 export let chat = new Chat;
 
 function startChat(loginFormId, chatBlockId) {

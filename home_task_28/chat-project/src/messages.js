@@ -1,4 +1,5 @@
-import {myName, chat} from "./app";
+import {chat} from "./app";
+import {myName} from "./authorization";
 
 export default class ChatMessage {
     constructor(name, message) {

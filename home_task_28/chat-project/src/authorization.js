@@ -1,11 +1,14 @@
-import {myName, chat} from "./app";
+import {chat} from "./app";
 import {loadChatHistory, updateUserInfo} from "./history";
 import {sendMessage} from "./messages";
 
+export let myName;
+
 export default function logIn(loginForm, chatBlock) {
-    if (myName) {
+    if (localStorage.getItem("username")) {
         chatBlock.classList.remove('hidden');
         loadChatHistory();
+        myName = localStorage.getItem("username");
     } else {
         loginForm.addEventListener('submit', (e) => getLogin(e, loginForm, chatBlock));
         loginForm.classList.remove('hidden');
@@ -21,8 +24,8 @@ function getLogin(e, loginForm, chatBlock) {
     if (!!nameInput.trim()) {
         chatBlock.classList.remove('hidden');
         loginForm.classList.add('hidden');
-        myName = nameInput;
         updateUserInfo(nameInput);
+        myName = nameInput;
     } else {
         loginForm.reset();
         loginForm.inputName.classList.add('error');
