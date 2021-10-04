@@ -1,4 +1,3 @@
-import {myName} from './authorization';
 import {updateChatHistory, updateUserBlock} from './history';
 import ChatMessage from './messages';
 
@@ -65,7 +64,7 @@ export default class Chat {
     }
 
     isRequiredMessage(data) {
-        if (data.payload.username === myName) {
+        if (data.payload.username === localStorage.getItem("username")) {
             return false;
         } else if (data.type !== 'message') {
             return false;

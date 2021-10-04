@@ -1,5 +1,6 @@
 import {chat} from "./app";
-import {myName} from "./authorization";
+
+const myName = localStorage.getItem("username");
 
 export default class ChatMessage {
     constructor(name, message) {
