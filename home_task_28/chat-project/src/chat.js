@@ -1,5 +1,5 @@
 import {updateChatHistory, updateUserBlock} from './history';
-import ChatMessage from './messages';
+import {ChatMessage} from './app';
 
 export default class Chat {
     constructor() {

@@ -1,4 +1,4 @@
-import ChatMessage from './messages';
+import {ChatMessage} from './app';
 
 export function loadChatHistory() {
     if (localStorage.chatHistory) {
