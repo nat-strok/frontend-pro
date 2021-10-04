@@ -112,7 +112,7 @@ button:hover {
     gap: 30px;
     align-content: flex-start;
     height: 100vh;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .chat-head-wrapper {
