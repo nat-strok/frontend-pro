@@ -50,7 +50,7 @@ export class Chat {
                 updateChatHistory(incoming, "chatHistory");
                 if (this.isUniqUser(incoming)) {
                     updateChatHistory(incoming.payload.username, "usersList");
-                    updateUserBlock.append(`, ${incoming.payload.username}`);
+                    updateUserBlock(`, ${incoming.payload.username}`);
                 }
             }
         } catch (error) {

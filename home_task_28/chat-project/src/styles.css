@@ -2,7 +2,7 @@
     font-family: arial, sans-serif;
     font-size: 16px;
     max-width: 740px;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 0 20px;
     display: flex;
     flex-flow: column nowrap;
@@ -28,7 +28,6 @@
 form {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 40px;
     position: relative;
     gap: 20px;
 }
@@ -111,6 +110,7 @@ button:hover {
 .chat-box {
     display: flex;
     flex-direction: column;
+    gap: 30px;
     align-content: flex-start;
     height: 100vh;
     overflow-y: hidden;
@@ -128,6 +128,9 @@ button:hover {
     overflow-y: auto;
     height: auto;
     max-height: 100%;
+    padding: 20px 0;
+    background-color: rgba(128, 128, 128, 0.05);
+    border-radius: var(--radius);
 }
 
 .users-block {
@@ -143,13 +146,13 @@ button:hover {
 }
 
 .chat-history {
-    padding-right: 20px;
+    padding: 0 20px 20px 40px;
     overflow-y: auto;
     height: 100%;
 }
 
-.chat-history p:first-child {
-    animation: fade-in-top .3s cubic-bezier(.39,.575,.565,1.000) both;
+.chat-history p:last-child {
+    animation: text-focus-in .5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 .user-name,
@@ -173,4 +176,4 @@ button:hover {
     90% {transform: rotate(2deg);}
 }
 
-@keyframes fade-in-top{0%{transform:translateY(-50px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes text-focus-in{0%{filter:blur(12px);opacity:0}100%{filter:blur(0);opacity:1}}

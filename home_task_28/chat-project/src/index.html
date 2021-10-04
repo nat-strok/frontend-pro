@@ -16,19 +16,19 @@
 <div id="chatContainer" class="chat-box hidden">
 
     <div class="chat-head-wrapper">
-        <div class="users-block"><strong>List of users:</strong></div>
+        <div class="users-block"><strong>List of users</strong></div>
         <button id="btnLogout" name="btnLogout">Logout</button>
-
-        <form id="messageForm" class="chat-form">
-            <label class="reconnect"><input id="reconnect" type="checkbox" checked/>hold connection</label>
-            <textarea name="inputMessage" rows="6" placeholder="Write a message here"></textarea>
-            <button id="btnSend">Send</button>
-        </form>
+        <label class="reconnect"><input id="reconnect" type="checkbox" checked/>hold connection</label>
     </div>
 
     <div class="chat-text-wrapper">
         <div id="chatHistory" class="chat-history"></div>
     </div>
+
+    <form id="messageForm" class="chat-form">
+        <textarea name="inputMessage" rows="1" placeholder="Write a message here"></textarea>
+        <button id="btnSend">Send</button>
+    </form>
 
 </div>
 </body>

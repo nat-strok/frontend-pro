@@ -11,6 +11,7 @@ export class ChatMessage {
 
     createMessage() {
         if (this.mine) this.userClass = 'user-name my-name';
-        this.parentBlock.insertAdjacentHTML('afterbegin', `<p><span class="${this.userClass}">${this.name}:</span> ${this.message}</p>`);
+        this.parentBlock.insertAdjacentHTML('beforeend', `<p><span class="${this.userClass}">${this.name}:</span> ${this.message}</p>`);
+        this.parentBlock.querySelector('p:last-child').scrollIntoView({behavior: 'smooth', block: 'end'})
     }
 }
