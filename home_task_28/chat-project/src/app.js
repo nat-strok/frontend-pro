@@ -17,14 +17,13 @@ function logIn() {
     if (myName) {
         mainBlock.chatBlock.classList.remove('hidden');
         loadChatHistory();
+        chat.start();
     } else {
         mainBlock.loginForm.addEventListener('submit', (e) => getLogin(e, mainBlock));
         mainBlock.loginForm.classList.remove('hidden');
     }
     document.body.querySelector('#messageForm').addEventListener('submit', sendMessage);
     document.body.querySelector('#btnLogout').addEventListener('click', logOut);
-
-    chat.start();
 }
 
 function getLogin(e, mainBlock) {
@@ -36,6 +35,7 @@ function getLogin(e, mainBlock) {
         mainBlock.loginForm.classList.add('hidden');
         updateUserInfo(nameInput);
         myName = nameInput;
+        chat.start();
     } else {
         mainBlock.loginForm.reset();
         mainBlock.loginForm.inputName.classList.add('error');
